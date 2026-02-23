@@ -150,6 +150,26 @@ Refer to Section 4 - Sample Usage (i.e. How to run the code...)
 
 ## 3. API Documentation
 
+This API is built using FastAPI [FastAPI Tutorial Link](https://www.youtube.com/watch?v=iWS9ogMPOI0&pp=0gcJCaIKAYcqIYzv)<br>
+For more information, you may refer to [FastAPI's Documentation Link](https://fastapi.tiangolo.com/#deploy-your-app-optional)<br>
+For examples on how to run the code, refer to Section 4 of the README.md Doc :)
+
+1. POST /api/images <br>
+Accepts file uploads, and returns an image_id to the user for future references (as long as the server does not restart or shutdown in between). Additionally, a pre-failure message may be issued to the client should they upload a file that does not match the criteria (e.g. Not JPG or PNG file type)
+<br>
+2. GET /api/images<br>
+Returns all processed images or in-processing images to the client in a JSON format.
+<br>
+3. GET /api/images/<image_id><br>
+Returns information for only the specified image mentioned. Should a client enter an invalid image_id, an error message will be returned.
+<br>
+4. GET /api/images/<images_id>/<small or medium><br>
+To be run in the web browser. Web browser should return the specified image and its respective size (depending on what the user specified). Will return an error message if the user requests for a invalid image_id or an invalid image size.
+<br>
+5. GET /api/stats<br>
+Returns the statistics of all the images (e.g. total no. of files uploaded, no. of failed files, average time taken to process each file, etc.)
+<br>
+
 ## 4. Sample Usage (i.e. How to run the code...)
 
 Open up a new powershell tab or window:
@@ -209,6 +229,7 @@ curl.exe http://<ip_addr>:<port_no.>/api/stats
 ![alt text](image-5.png)
 
 ## 5. Processing Pipeline Explanation
+![alt text](Pipeline_Explanation.jpg)
 
 
 ## External Resources
