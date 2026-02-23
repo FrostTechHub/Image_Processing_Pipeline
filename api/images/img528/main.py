@@ -7,7 +7,7 @@ from typing import Optional, Dict
 from PIL import Image # Generating Thumbnail images
 from PIL.ExifTags import TAGS
 from time import perf_counter
-# from hugging_face import predict_caption
+from hugging_face import predict_caption
 import string, random, os
 
 class Metadata(BaseModel):
@@ -24,9 +24,8 @@ class ImageData(BaseModel):
     image_id: str
     original_name: str
     processed_at: str
-    ai_caption: str = ""
     metadata: Optional[Metadata] = None
-    exif_data: Optional[dict] = None
+    ai_caption: str
     thumbnails: Optional[Thumbnails] = None
 
 class ImageResponse(BaseModel):
@@ -47,9 +46,8 @@ entry_counter = 0
 fail_counter = 0 # Counts the no. of errors (resets everytime the server reloads)
 succ_counter = 0 
 total_process_time_sec = 0 # Updates after every entry...
-API_IMAGES_ROUTES = "/api/images"
-PRIMARY_DIR = os.path.join("api", "images")
-SECONDARY_DIR = os.path.join("api", "stats")
+PRIMARY_DIR = "/api/images"
+SECONDARY_DIR = "/api/stats"
 
 app = FastAPI()
 os.makedirs(PRIMARY_DIR, exist_ok=True)  # Generates directory if not already generated
@@ -111,23 +109,6 @@ def get_img_metadata(image_path: str):
 
     return Metadata(width = _width, height = _height, format = _format, size_bytes = _size_bytes)
 
-def get_img_EXIFData(image_path: str) -> dict:
-
-    data_dict = {}
-    print(f"get_img_EXIFData: {image_path}")
-    img = Image.open(image_path)
-
-    exifData = img.getexif()    # Extract the exif data
-
-    # Loop through all the tags present in exifdata
-    for tagid in exifData:
-        tagName = TAGS.get(tagid, tagid)    # Retrieving tag name instead of tag id
-        value = exifData.get(tagid)         # Passing the tag id to get respective value
-        print(f"{tagName: 25} : {value}")
-        data_dict[tagName] = value
-
-    return data_dict
-
 # Generate Thumbnails object
 def get_img_thumbnail(file_path: str, img_id: str):
 
@@ -145,23 +126,23 @@ def generate_img_thumbnail_sizes(image_path: str, small: bool, img_id: str):
         image = image.convert("RGB")
 
     if small == True:
-        size = (128, 128)   # Assign a small pixel size
-        suffix = "small"
+        SIZE = (128, 128)   # Assign a small pixel size
+        SUFFIX = "small"
     else:
-        size = (512, 512)   # Assign a medium pixel size
-        suffix = "medium"
+        SIZE = (512, 512)   # Assign a medium pixel size
+        SUFFIX = "medium"
 
-    image.thumbnail(size) # Generate thumbnail based on SIZE variable
+    image.thumbnail(SIZE) # Generate thumbnail based on SIZE variable
 
     # Generate a thumbsnail folder
-    thumbnails_folder = os.path.join(PRIMARY_DIR, img_id, "thumbnails")
+    thumbnails_folder = os.path.join("api/images", img_id, "thumbnails")
     os.makedirs(thumbnails_folder, exist_ok=True)
 
-    thumbnails_path = os.path.join(thumbnails_folder, f"{suffix}.jpg")
+    thumbnails_path = os.path.join(thumbnails_folder, f"{SUFFIX}.jpg")
     
     image.save(thumbnails_path)
 
-    return f"http://localhost:8000/api/images/{img_id}/thumbnails/{suffix}"
+    return f"http://localhost:8000/api/images/{img_id}/thumbnails/{SUFFIX}"
 
 # Verifies if the image response object is inside the images list
 def does_img_exist(img_id: str) -> object:
@@ -176,7 +157,7 @@ def root():
 
 # Function 1: Processing Input (JPG / PNG files types only)
 # Command to run this function: curl.exe -F "file=@{file_name}.{file_extension}" http://127.0.0.1:8000/api/images (POWERSHELL)
-@app.post(API_IMAGES_ROUTES, response_model = ImageResponse)
+@app.post(PRIMARY_DIR, response_model = ImageResponse)
 async def upload_image(file: UploadFile = File(...)):
     global succ_counter, fail_counter, entry_counter
 
@@ -187,7 +168,7 @@ async def upload_image(file: UploadFile = File(...)):
         img_id = generate_new_img_ID()  # Generate img_id
         org_name = file.filename        # Keep original naming of file
 
-        image_folder = os.path.join(PRIMARY_DIR, img_id)
+        image_folder = os.path.join(PRIMARY_DIR.strip("/"), img_id)
         os.makedirs(image_folder, exist_ok= True) # Make a new folder for every new img_id
 
         file_location = os.path.join(image_folder, org_name)
@@ -204,9 +185,8 @@ async def upload_image(file: UploadFile = File(...)):
             image_id = img_id, 
             original_name = org_name, 
             processed_at = timestamp, 
-            ai_caption = "No Internet Connection...",
             metadata = None,
-            exif_data = None,
+            ai_caption = predict_caption([org_name])[0],
             thumbnails = None
             )
         
@@ -222,9 +202,7 @@ async def upload_image(file: UploadFile = File(...)):
             return imgRes_obj
         
         else:
-            # imgData_obj.ai_caption = predict_caption([org_name])[0]
             imgData_obj.metadata = get_img_metadata(file_location)
-            imgData_obj.exif_data = get_img_EXIFData(file_location)
             imgData_obj.thumbnails = get_img_thumbnail(file_location, img_id)
 
             imgRes_obj = ImageResponse(status = "Success", data = imgData_obj, error = None)
