@@ -231,6 +231,8 @@ curl.exe http://<ip_addr>:<port_no.>/api/stats
 ## 5. Processing Pipeline Explanation
 ![alt text](Pipeline_Explanation.jpg)
 
+### Explanation:
+The API follows a sequential processing pipeline consisting of input validation, image processing, thumbnail generation, AI captioning, and building a structured JSON response. Each stage of the process is responsibile for handling a single responsibility to ensure modularity amd maintainability. 
 
 ## External Resources
 ### [Reading Resources]
