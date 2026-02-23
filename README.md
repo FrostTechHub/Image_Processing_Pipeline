@@ -35,19 +35,50 @@ Error handling is implemented to gracefully manage:
 Processing logs are recorded using structured logging to support traceability and debugging. This implementation is designed to be modular, extensible, and production-oriented, with optional support for asynchronous processing and job queuing for improved scalability.
 
 ## 2. Installation Steps & Setup Guide
-#Prerequisites
-Ensure the following are installed:
-    1. Python Version 3.10 or newer
-    2. Git
-    3. VSCode (Optional but recommended)
+### A. Prerequisites:
 
-Verify point 1 and point 2 have successfully been installed using the following commands:
+Ensure the following software is installed:
 
+- Python 3.10 or newer  
+  https://www.python.org/downloads/
+
+- Git  
+  https://git-scm.com/downloads
+
+(Optional but recommended)
+- VSCode  
+  https://code.visualstudio.com/
+
+  Verify installation:
+
+```bash
 python --version
 git --version
+```
 
 ## 3. API Documentation
 
 ## 4. Sample Usage (i.e. How to run the code...)
 
 ## 5. Processing Pipeline Explanation
+
+
+## External Resources
+[Reading Resources]
+https://curl.se/docs/tutorial.html
+https://reqbin.com/req/python/c-dot4w5a2/curl-post-file#:~:text=Posting%20a%20File%20with%20Curl,Author:%20ReqBin
+https://fastapi.tiangolo.com/#deploy-your-app-optional
+https://fastapi.tiangolo.com/advanced/custom-response/#fileresponse
+https://www.geeksforgeeks.org/python/python-pil-image-thumbnail-method/
+https://www.geeksforgeeks.org/python/how-to-extract-image-metadata-in-python/
+https://www.metadata2go.com/result#j=ba05b304-1100-4236-b977-2e103bd8abe0
+https://www.w3schools.com/python/python_file_open.asp
+https://www.w3schools.com/python/python_dictionaries_add.asp
+https://huggingface.co/nlpconnect/vit-gpt2-image-captioning
+https://huggingface.co/docs/transformers/en/installation
+
+[Youtube Tutorials]
+https://www.youtube.com/watch?v=iWS9ogMPOI0&pp=0gcJCaIKAYcqIYzv
+https://www.youtube.com/watch?v=8t6nbOH78lY
+https://www.youtube.com/watch?v=okSrioyYnHw
+
