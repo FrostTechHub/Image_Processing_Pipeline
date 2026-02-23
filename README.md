@@ -10,45 +10,45 @@ The system is designed to automatically process uploaded images, generate thumbn
 
 The API supports JPEG and PNG image uploads and performs the following automated processing steps:
 
-    * Accepts image uploads via POST /api/images
+    - Accepts image uploads via POST /api/images
 
-    * Generates two thumbnail sizes (small and medium)
+    - Generates two thumbnail sizes (small and medium)
 
-    * Extracts core metadata including dimensions, file format, file size, and timestamp
+    - Extracts core metadata including dimensions, file format, file size, and timestamp
 
-    * Generates an AI-based image caption using a publicly available model
+    - Generates an AI-based image caption using a publicly available model
 
-    * Stores processing results in persistent storage
+    - Stores processing results in persistent storage
 
-    * Provides structured JSON responses following the required response format
+    - Provides structured JSON responses following the required response format
 
-    * Exposes thumbnail images via dedicated retrieval endpoints
+    - Exposes thumbnail images via dedicated retrieval endpoints
 
-    * Tracks processing statistics including success rate and average processing time
+    - Tracks processing statistics including success rate and average processing time
 
 The system follows RESTful API design principles and separates concerns between:
 
-    * Image storage
+    - Image storage
 
-    * Metadata extraction
+    - Metadata extraction
 
-    * Thumbnail generation
+    - Thumbnail generation
 
-    * AI analysis
+    - AI analysis
 
-    * API response handling
+    - API response handling
 
-    * Processing statistics tracking
+    - Processing statistics tracking
 
 Error handling is implemented to gracefully manage:
 
-    * Unsupported file formats
+    - Unsupported file formats
 
-    * Corrupted image files
+    - Corrupted image files
 
-    * Processing failures
+    - Processing failures
 
-    * AI inference errors
+    - AI inference errors
 
 Processing logs are recorded using structured logging to support traceability and debugging. This implementation is designed to be modular, extensible, and production-oriented, with optional support for asynchronous processing and job queuing for improved scalability.
 
@@ -144,7 +144,13 @@ You will see the following result:
 
 <b>Take note of the IP Address and Port No.. You will need it later...</b>
 
-### F. Using the Application
+### F. Ready to use
+
+Refer to Section 4 - Sample Usage (i.e. How to run the code...) 
+
+## 3. API Documentation
+
+## 4. Sample Usage (i.e. How to run the code...)
 
 Open up a new powershell tab or window:
 
@@ -156,43 +162,51 @@ curl.exe -F "file=@<file_name>.<file_extension>" http://<ip_addr>:<port_no.>/api
 ```
 
 <b>Expected Results:</b>
-*Depending on the <file_extension> type, you may or may not get an error message.
+
 ![alt text](image-1.png)
+*Depending on the <file_extension> type, you may or may not get an error message.
+
+2. Viewing all images
+
+```bash
+curl.exe http://<ip_addr>:<port_no.>/api/images
+```
+
+<b>Expected Results: </b>
+![alt text](image-2.png)
+*Take note of "image_id" as you will need it for when viewing specific images
 
 
+3. Viewing a specific image
+
+```bash
+curl.exe http://<ip_addr>:<port_no.>/api/images/<image_id>
+```
+
+<b>Expected Results: </b>
+![alt text](image-3.png)
+*Take note of the URL link for when viewing the image at a small / medium scale...
 
 
+4. Viewing a specific image at a small / medium scale
 
+```bash
+http://<ip_addr>:<port_no.>/api/images/<image_id>/<small / medium>
+```
+*You can either Cntrl + Click on the link, or you can copy and paste it into a web browser
+**Choose between small or medium options only...
 
+<b>Expected Results: </b>
+![alt text](image-4.png)
 
+5. Viewing of statistics
 
+```bash
+curl.exe http://<ip_addr>:<port_no.>/api/stats
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 3. API Documentation
-
-## 4. Sample Usage (i.e. How to run the code...)
+<b>Expected Results: </b>
+![alt text](image-5.png)
 
 ## 5. Processing Pipeline Explanation
 
