@@ -34,7 +34,17 @@ Error handling is implemented to gracefully manage:
 
 Processing logs are recorded using structured logging to support traceability and debugging. This implementation is designed to be modular, extensible, and production-oriented, with optional support for asynchronous processing and job queuing for improved scalability.
 
-## 2. Installation Steps
+## 2. Installation Steps & Setup Guide
+#Prerequisites
+Ensure the following are installed:
+    1. Python Version 3.10 or newer
+    2. Git
+    3. VSCode (Optional but recommended)
+
+Verify point 1 and point 2 have successfully been installed using the following commands:
+
+python --version
+git --version
 
 ## 3. API Documentation
 

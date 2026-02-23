@@ -419,3 +419,6 @@
 2026-02-23 20:50:19,499 - INFO - JOB_COMPLETED - img_id : img135
 2026-02-23 20:50:19,500 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
 2026-02-23 20:50:19,501 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 21:10:19,445 - WARNING - NON_EXISTENT_SIZING - Client has attempted to view a file's thumbnail, but file does not contain the sizing the user is looking for (img_id: status='success' data=ImageData(image_id='img932', original_name='cat_01.jpg', processed_at='2026-02-23T11:55:09Z', metadata=Metadata(width=270, height=187, format='JPEG', size_bytes=7889), exif_data={'info': 'No EXIF Data to extract'}, ai_caption='a cat sitting on the ground next to a wall', thumbnails=Thumbnails(small='http://localhost:8000/api/images/img932/thumbnails/small', medium='http://localhost:8000/api/images/img932/thumbnails/medium')) error=None, requested_size: large).
+2026-02-23 21:11:17,944 - WARNING - INVALID_IMAGE_ID - Client has attempted to access a file with an invalid ID (img_id: None).
+2026-02-23 21:12:35,629 - WARNING - INVALID_IMAGE_ID - Client has attempted to access a file with an invalid ID (img_id: None).
