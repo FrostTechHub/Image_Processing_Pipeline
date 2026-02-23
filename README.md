@@ -2,7 +2,6 @@
 
 ## Submission Details
 **Name:** Muhammad Fizry Bin Ridzwan
-**Submission Date:** 23 February 2026
 
 ## 1. Project Overview
 This project implements a RESTful Image Processing Pipeline API as part of the Digital Forensics Internship – Software Engineering Assessment 

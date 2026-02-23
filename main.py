@@ -1,14 +1,16 @@
 # Import Modules
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse, FileResponse
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel
 from typing import Optional, Dict
-from PIL import Image # Generating Thumbnail images
+from PIL import Image
 from PIL.ExifTags import TAGS
 from time import perf_counter
-# from hugging_face import predict_caption
-import string, random, os
+from hugging_face import predict_caption
+from enum import Enum
+from typing import Any
+import string, random, os, asyncio, logging
 
 class Metadata(BaseModel):
     width: int
@@ -23,10 +25,10 @@ class Thumbnails(BaseModel):
 class ImageData(BaseModel):
     image_id: str
     original_name: str
-    processed_at: str
-    ai_caption: str = ""
+    processed_at: str = ""
     metadata: Optional[Metadata] = None
     exif_data: Optional[dict] = None
+    ai_caption: str = ""
     thumbnails: Optional[Thumbnails] = None
 
 class ImageResponse(BaseModel):
@@ -40,8 +42,14 @@ class Stats(BaseModel):
     success_rate: str
     average_processing_time_seconds: float
 
+class JobStatus(str, Enum):
+    queued: str = "queued"
+    processing: str = "processing"
+    success: str = "success"
+    failed: str = "failed"
+
 # Global Variables
-images = []
+images: Dict[str, ImageResponse] = {}
 ALLOWED_EXTENSIONS = ["jpg", "jpeg", "png"]
 entry_counter = 0
 fail_counter = 0 # Counts the no. of errors (resets everytime the server reloads)
@@ -51,15 +59,21 @@ API_IMAGES_ROUTES = "/api/images"
 PRIMARY_DIR = os.path.join("api", "images")
 SECONDARY_DIR = os.path.join("api", "stats")
 
-app = FastAPI()
+job_queue: asyncio.Queue[Dict[str, Any]] = asyncio.Queue()
 os.makedirs(PRIMARY_DIR, exist_ok=True)  # Generates directory if not already generated
 
+# Configure Logging Settings...
+logging.basicConfig(filename="app.log", level=logging.DEBUG, filemode="a", format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger("app")
+
+app = FastAPI()
+
 # Track the start time taken 
-def start_timer():
+def start_time():
     return perf_counter()
 
 # Track the start time taken
-def end_timer(start):
+def end_time(start):
     global total_process_time_sec
 
     elapsed = (perf_counter() - start)
@@ -67,8 +81,7 @@ def end_timer(start):
 
 # Calculate average processing time
 def calc_average_time() -> float:
-    global total_process_time_sec
-    global entry_counter
+    global total_process_time_sec, entry_counter
 
     if (entry_counter == 0):
         return 0.0
@@ -77,8 +90,10 @@ def calc_average_time() -> float:
 
 # Calculate success rate
 def calc_suc_rate() -> str:
-    global succ_counter
-    global entry_counter
+    global succ_counter, entry_counter, fail_counter
+
+    if (entry_counter == 0):
+        return f"0.00%"
 
     return f"{(succ_counter / entry_counter) * 100:.2f}"
 
@@ -91,6 +106,7 @@ def verify_file_type(filename: str) -> bool:
         return format in ALLOWED_EXTENSIONS # Verify if file format is in list of allowed extensions
     
     except Exception:
+        logger.info("FILE_EXTENSION_INVALID - Client has uploaded an file with an invalid file extension.")
         return False
 
 # Generate Unique Image IDs
@@ -114,17 +130,18 @@ def get_img_metadata(image_path: str):
 def get_img_EXIFData(image_path: str) -> dict:
 
     data_dict = {}
-    print(f"get_img_EXIFData: {image_path}")
     img = Image.open(image_path)
-
     exifData = img.getexif()    # Extract the exif data
 
     # Loop through all the tags present in exifdata
     for tagid in exifData:
         tagName = TAGS.get(tagid, tagid)    # Retrieving tag name instead of tag id
         value = exifData.get(tagid)         # Passing the tag id to get respective value
-        print(f"{tagName: 25} : {value}")
         data_dict[tagName] = value
+
+    if len(data_dict) == 0:
+        logger.info("NON_EXISTENT_DATA - File appears to contain NO EXIF Data.")
+        data_dict["info"] = "No EXIF Data to extract"
 
     return data_dict
 
@@ -138,6 +155,9 @@ def get_img_thumbnail(file_path: str, img_id: str):
 
 # Generate Thumbnails Sizes
 def generate_img_thumbnail_sizes(image_path: str, small: bool, img_id: str):
+
+    logger.debug(f"THUMBNAIL_GENERATING - img_id : {img_id}, small? : {small}")
+
     image = Image.open(image_path)
 
     # Converter for PNG images...
@@ -160,99 +180,155 @@ def generate_img_thumbnail_sizes(image_path: str, small: bool, img_id: str):
     thumbnails_path = os.path.join(thumbnails_folder, f"{suffix}.jpg")
     
     image.save(thumbnails_path)
+    logger.debug(f"THUMBNAIL_SAVED - pathway : {thumbnails_path}")
 
     return f"http://localhost:8000/api/images/{img_id}/thumbnails/{suffix}"
 
-# Verifies if the image response object is inside the images list
-def does_img_exist(img_id: str) -> object:
-    for img in images:
-        if (img.data.image_id == img_id):
-            return img
+async def running_loop():
+    global succ_counter, fail_counter
+
+    while True:
+        logger.debug(f"QUEUE_SIZE_BEFORE_GET - size={job_queue.qsize()}")
+
+        job = await job_queue.get()
+        s_t = start_time() # Start Time to calculate processing time
+        img_id = job["img_id"]  # Retrieve already generated img id
+        file_location = job["file_location"]
+
+        current = images[img_id]
+        current.status = JobStatus.processing.value
+        images[img_id] = current
+
+        logger.info(f"JOB_PROCESSING_STARTED - img_id : {img_id}, status : {current.status}")
+
+        try:
+            timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            metadata = get_img_metadata(file_location)
+            ai_caption = predict_caption([file_location])[0]
+            # ai_caption = "Temporarily Disabled"
+            exif_data = get_img_EXIFData(file_location)
+            thumbnails = get_img_thumbnail(file_location, img_id)
+
+            # Update stored responses
+            current.data.processed_at = timestamp
+            current.data.ai_caption = ai_caption
+
+            logger.info(f"CAPTION_GENERATED_SUCCESSFUL - img_id{img_id}")
+
+            current.data.metadata = metadata
+            current.data.exif_data = exif_data
+            current.data.thumbnails = thumbnails
+
+            logger.info(f"THUMBNAILS_CREATED - img_id : {img_id}")
+
+            current.status = JobStatus.success.value
+            current.error = None
+            images[img_id] = current
+
+            succ_counter += 1
+
+            logger.info(f"JOB_COMPLETED - img_id : {img_id}")
+
+            end_time(s_t)
+
+        except Exception as e:
+            end_time(s_t)
+
+            current.status = JobStatus.failed.value
+            current.error = str(e)
+            images[img_id] = current
+
+            logger.error(f"JOB_FAILED - img_id : {img_id}, error : {current.error}, exc_info=True")
+
+            fail_counter += 1
+
+        finally:
+            job_queue.task_done()
+            logger.debug(f"QUEUE_SIZE_AFTER_DONE - size={job_queue.qsize()}")
 
 # Routes Declaration
+@app.on_event("startup")
+async def startup_event():  # First function to run...
+    asyncio.create_task(running_loop())
+
 @app.get("/api")
 def root():
-    return {"Hello": "World"}
+    return {"Hello": "HTX"}
 
 # Function 1: Processing Input (JPG / PNG files types only)
 # Command to run this function: curl.exe -F "file=@{file_name}.{file_extension}" http://127.0.0.1:8000/api/images (POWERSHELL)
 @app.post(API_IMAGES_ROUTES, response_model = ImageResponse)
 async def upload_image(file: UploadFile = File(...)):
-    global succ_counter, fail_counter, entry_counter
+    global fail_counter, entry_counter
 
     entry_counter += 1
-    s_t = start_timer()
 
-    try:
-        img_id = generate_new_img_ID()  # Generate img_id
-        org_name = file.filename        # Keep original naming of file
+    img_id = generate_new_img_ID()  # Generate img_id
+    org_name = file.filename        # Keep original naming of file
 
-        image_folder = os.path.join(PRIMARY_DIR, img_id)
-        os.makedirs(image_folder, exist_ok= True) # Make a new folder for every new img_id
+    logger.info(f"UPLOAD_RECEIVED - img_id : {img_id}, filename : {org_name}")
 
-        file_location = os.path.join(image_folder, org_name)
+    image_folder = os.path.join(PRIMARY_DIR, img_id)
+    os.makedirs(image_folder, exist_ok= True) # Make a new folder for every new img_id
 
-        # Saved the file
-        with open(file_location, "wb") as buffer:
-            content = await file.read()
-            buffer.write(content)
+    file_location = os.path.join(image_folder, org_name)
 
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S") # When the file has finished 'processing'
-        
-        # Create a base object (no metadata / thumbnails added yet)
-        imgData_obj = ImageData(
-            image_id = img_id, 
-            original_name = org_name, 
-            processed_at = timestamp, 
-            ai_caption = "No Internet Connection...",
-            metadata = None,
-            exif_data = None,
-            thumbnails = None
-            )
-        
-        # Verify if file extension is of required format
-        if verify_file_type(file_location) == False:
-
-            imgRes_obj = ImageResponse(status = "Failed", data = imgData_obj, error = "Invalid File Format!")
-
-            # Append image responses object into list
-            images.append(imgRes_obj)
-            fail_counter += 1   # Update failed counter...
-
-            return imgRes_obj
-        
-        else:
-            # imgData_obj.ai_caption = predict_caption([org_name])[0]
-            imgData_obj.metadata = get_img_metadata(file_location)
-            imgData_obj.exif_data = get_img_EXIFData(file_location)
-            imgData_obj.thumbnails = get_img_thumbnail(file_location, img_id)
-
-            imgRes_obj = ImageResponse(status = "Success", data = imgData_obj, error = None)
-            
-            # Append image responses object into list
-            images.append(imgRes_obj)
-            succ_counter += 1   # Update success counter...
-            end_timer(s_t)  # End Timer...
-
-            return imgRes_obj
+    # Saved the file
+    with open(file_location, "wb") as buffer:
+        content = await file.read()
+        buffer.write(content)
+        logger.debug(f"FILE_SAVED - img_id : {img_id}, pathway : {file_location}")
     
-    except Exception as e:
-        end_timer(s_t)
-        return ImageResponse(status = "Failed", data = None, error = str(e))
+    # Create a base object (no metadata / thumbnails added yet)
+    imgData_obj = ImageData(
+        image_id = img_id, 
+        original_name = org_name, 
+        processed_at = "", 
+        metadata = None,
+        ai_caption = "",
+        exif_data = None,
+        thumbnails = None
+        )
+    
+    file_valid_result = verify_file_type(file_location)
+
+    # Verify if file extension is of required format
+    if verify_file_type(file_location) == False:
+        fail_counter += 1   # Update failed counter...
+        imgRes_obj = ImageResponse(status = JobStatus.failed.value, data = imgData_obj, error = "Invalid File Format!")
+
+        # Append image responses object into dict
+        images[img_id] = imgRes_obj
+        return imgRes_obj
+    
+    logger.info(f"FILE_EXTENSION_VERIFIED - img_id : {img_id}, valid : {file_valid_result}")
+
+    imgRes_obj = ImageResponse(status = JobStatus.queued.value, data = imgData_obj, error = None)
+    images[img_id] = imgRes_obj
+
+    logger.info(f"JOB_ENQUEUED - img_id : {img_id}")
+
+    await job_queue.put({
+        "img_id" : img_id,
+        "file_location" : file_location,
+        "org_name" : org_name
+    })
+
+    return imgRes_obj
     
 # Function 2: Returns a list of processed images 
 @app.get("/api/images", response_model = list[ImageResponse])
 def return_all_image():
-    return images
+    return list(images.values())
 
 # Function 3: Returns a image object
 @app.get("/api/images/{img_id}")
 def get_image(img_id: str):
 
-    image_obj = does_img_exist(img_id)
+    image_obj = images.get(img_id)
 
     if image_obj is None:
-        return {"error" : "Image ID Not Found!"}
+        return ImageResponse(status = JobStatus.failed.value, data = None, error = "Invalid Image ID - Image does not exists...")
 
     return image_obj
 
@@ -260,19 +336,19 @@ def get_image(img_id: str):
 @app.get("/api/images/{img_id}/thumbnails/{size}")
 def get_thumbnail(img_id: str, size: str):
     
-    image_obj = does_img_exist(img_id)
+    image_obj = images.get(img_id)
 
     if image_obj is None:
+        logger.warning(f"INVALID_IMAGE_ID - Client has attempted to access a file with an invalid ID (img_id: {images.get(img_id)}).")
         return {"error" : "Image ID Not Found!"}
     
     if image_obj.data.thumbnails is None:
+        logger.warning(f"NON_EXISTENT_DATA - Client has attempted to view a file's thumbnail, but file contains no thumbnails (img_id: {images.get(img_id)}).")
         return {"error" : "No Thumbnails Available!"}
     
-    if size.lower() == "small":
-        url = image_obj.data.thumbnails.small
-    elif size.lower() == "medium":
-        url = image_obj.data.thumbnails.medium
-    else:
+    if size.lower() not in ["small", "medium"]:
+        logger.warning("NON_EXISTENT_SIZING - Client has attempted to view a file's thumbnail, but file "
+            + f"does not contain the sizing the user is looking for (img_id: {images.get(img_id)}, requested_size: {size}).")
         return {"error" : "Invalid Thumbnail Sizing..."}
     
     file_pathway = f"api/images/{img_id}/thumbnails/{size}.jpg"

@@ -1,0 +1,421 @@
+2026-02-23 18:25:05,273 - DEBUG - close.started
+2026-02-23 18:25:05,273 - DEBUG - close.complete
+2026-02-23 18:25:05,273 - DEBUG - close.started
+2026-02-23 18:25:05,273 - DEBUG - close.complete
+2026-02-23 18:25:27,303 - DEBUG - close.started
+2026-02-23 18:25:27,303 - DEBUG - close.complete
+2026-02-23 18:25:27,304 - DEBUG - close.started
+2026-02-23 18:25:27,305 - DEBUG - close.complete
+2026-02-23 18:34:02,871 - DEBUG - close.started
+2026-02-23 18:34:02,876 - DEBUG - close.complete
+2026-02-23 18:34:02,877 - DEBUG - close.started
+2026-02-23 18:34:02,878 - DEBUG - close.complete
+2026-02-23 18:39:02,322 - DEBUG - close.started
+2026-02-23 18:39:02,325 - DEBUG - close.complete
+2026-02-23 18:39:02,326 - DEBUG - close.started
+2026-02-23 18:39:02,326 - DEBUG - close.complete
+2026-02-23 18:44:43,246 - DEBUG - close.started
+2026-02-23 18:44:43,276 - DEBUG - close.complete
+2026-02-23 18:54:03,728 - DEBUG - close.started
+2026-02-23 18:54:03,744 - DEBUG - close.complete
+2026-02-23 18:54:03,745 - DEBUG - close.started
+2026-02-23 18:54:03,748 - DEBUG - close.complete
+2026-02-23 18:56:13,403 - DEBUG - close.started
+2026-02-23 18:56:13,405 - DEBUG - close.complete
+2026-02-23 18:56:13,405 - DEBUG - close.started
+2026-02-23 18:56:13,406 - DEBUG - close.complete
+2026-02-23 18:56:56,969 - DEBUG - close.started
+2026-02-23 18:56:56,969 - DEBUG - close.complete
+2026-02-23 18:56:56,969 - DEBUG - close.started
+2026-02-23 18:56:56,971 - DEBUG - close.complete
+2026-02-23 18:57:15,922 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 18:58:49,111 - DEBUG - close.started
+2026-02-23 18:58:49,111 - DEBUG - close.complete
+2026-02-23 18:58:49,112 - DEBUG - close.started
+2026-02-23 18:58:49,112 - DEBUG - close.complete
+2026-02-23 18:59:07,660 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:00:01,447 - DEBUG - close.started
+2026-02-23 19:00:01,449 - DEBUG - close.complete
+2026-02-23 19:00:01,449 - DEBUG - close.started
+2026-02-23 19:00:01,450 - DEBUG - close.complete
+2026-02-23 19:00:32,146 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:06:59,858 - DEBUG - close.started
+2026-02-23 19:06:59,880 - DEBUG - close.complete
+2026-02-23 19:06:59,880 - DEBUG - close.started
+2026-02-23 19:06:59,882 - DEBUG - close.complete
+2026-02-23 19:07:24,479 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:09:13,404 - DEBUG - close.started
+2026-02-23 19:09:13,405 - DEBUG - close.complete
+2026-02-23 19:09:13,406 - DEBUG - close.started
+2026-02-23 19:09:13,406 - DEBUG - close.complete
+2026-02-23 19:09:39,204 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:17:51,522 - DEBUG - close.started
+2026-02-23 19:17:51,527 - DEBUG - close.complete
+2026-02-23 19:17:51,527 - DEBUG - close.started
+2026-02-23 19:17:51,527 - DEBUG - close.complete
+2026-02-23 19:18:19,068 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:20:01,431 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_value with data[132:142]
+2026-02-23 19:20:01,431 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:01,431 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:20:01,431 - DEBUG - Calling on_part_data with data[146:8035]
+2026-02-23 19:20:01,431 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:20:01,431 - DEBUG - Calling on_end with no data
+2026-02-23 19:20:01,431 - INFO - UPLOAD_RECEIVED - img_id : img600, filename : cat_01.jpg
+2026-02-23 19:20:01,447 - DEBUG - FILE_SAVED - img_id : img600, pathway : api\images\img600\cat_01.jpg
+2026-02-23 19:20:01,494 - INFO - FILE_EXTENSION_VERIFIED - img_id : img600, valid : True
+2026-02-23 19:20:01,494 - INFO - JOB_ENQUEUED - img_id : img600
+2026-02-23 19:20:01,494 - INFO - JOB_PROCESSING_STARTED - img_id : img600, status : processing
+2026-02-23 19:20:01,494 - ERROR - JOB_FAILED - img_id : img600, error : type object 'datetime.datetime' has no attribute 'timezone', exc_info=True
+2026-02-23 19:20:01,494 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:20:01,494 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:20:02,891 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_value with data[132:142]
+2026-02-23 19:20:02,891 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:02,891 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:20:02,891 - DEBUG - Calling on_part_data with data[146:8250]
+2026-02-23 19:20:02,891 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:20:02,891 - DEBUG - Calling on_end with no data
+2026-02-23 19:20:02,891 - INFO - UPLOAD_RECEIVED - img_id : img854, filename : cat_02.jpg
+2026-02-23 19:20:02,907 - DEBUG - FILE_SAVED - img_id : img854, pathway : api\images\img854\cat_02.jpg
+2026-02-23 19:20:02,910 - INFO - FILE_EXTENSION_VERIFIED - img_id : img854, valid : True
+2026-02-23 19:20:02,910 - INFO - JOB_ENQUEUED - img_id : img854
+2026-02-23 19:20:02,910 - INFO - JOB_PROCESSING_STARTED - img_id : img854, status : processing
+2026-02-23 19:20:02,910 - ERROR - JOB_FAILED - img_id : img854, error : type object 'datetime.datetime' has no attribute 'timezone', exc_info=True
+2026-02-23 19:20:02,910 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:20:02,910 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:20:04,384 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_value with data[132:141]
+2026-02-23 19:20:04,384 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:04,384 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:20:04,390 - DEBUG - Calling on_part_data with data[145:65331]
+2026-02-23 19:20:04,391 - DEBUG - Calling on_part_data with data[0:254408]
+2026-02-23 19:20:04,391 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:20:04,391 - DEBUG - Calling on_end with no data
+2026-02-23 19:20:04,392 - INFO - UPLOAD_RECEIVED - img_id : img203, filename : cat_03.png
+2026-02-23 19:20:04,393 - DEBUG - FILE_SAVED - img_id : img203, pathway : api\images\img203\cat_03.png
+2026-02-23 19:20:04,412 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 19:20:04,412 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 19:20:04,412 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 19:20:04,412 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 19:20:04,412 - INFO - FILE_EXTENSION_VERIFIED - img_id : img203, valid : True
+2026-02-23 19:20:04,412 - INFO - JOB_ENQUEUED - img_id : img203
+2026-02-23 19:20:04,412 - INFO - JOB_PROCESSING_STARTED - img_id : img203, status : processing
+2026-02-23 19:20:04,412 - ERROR - JOB_FAILED - img_id : img203, error : type object 'datetime.datetime' has no attribute 'timezone', exc_info=True
+2026-02-23 19:20:04,423 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:20:04,423 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:20:09,440 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_value with data[71:117]
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_field with data[119:131]
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_value with data[133:157]
+2026-02-23 19:20:09,440 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:09,440 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:20:09,440 - DEBUG - Calling on_part_data with data[161:9548]
+2026-02-23 19:20:09,440 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:20:09,440 - DEBUG - Calling on_end with no data
+2026-02-23 19:20:09,440 - INFO - UPLOAD_RECEIVED - img_id : img528, filename : book_1.xlsx
+2026-02-23 19:20:09,440 - DEBUG - FILE_SAVED - img_id : img528, pathway : api\images\img528\book_1.xlsx
+2026-02-23 19:20:09,480 - DEBUG - Importing AvifImagePlugin
+2026-02-23 19:20:09,498 - DEBUG - Importing BlpImagePlugin
+2026-02-23 19:20:09,505 - DEBUG - Importing BmpImagePlugin
+2026-02-23 19:20:09,506 - DEBUG - Importing BufrStubImagePlugin
+2026-02-23 19:20:09,507 - DEBUG - Importing CurImagePlugin
+2026-02-23 19:20:09,507 - DEBUG - Importing DcxImagePlugin
+2026-02-23 19:20:09,519 - DEBUG - Importing DdsImagePlugin
+2026-02-23 19:20:09,523 - DEBUG - Importing EpsImagePlugin
+2026-02-23 19:20:09,540 - DEBUG - Importing FitsImagePlugin
+2026-02-23 19:20:09,543 - DEBUG - Importing FliImagePlugin
+2026-02-23 19:20:09,546 - DEBUG - Importing FpxImagePlugin
+2026-02-23 19:20:09,551 - DEBUG - Image: failed to import FpxImagePlugin: No module named 'olefile'
+2026-02-23 19:20:09,551 - DEBUG - Importing FtexImagePlugin
+2026-02-23 19:20:09,554 - DEBUG - Importing GbrImagePlugin
+2026-02-23 19:20:09,558 - DEBUG - Importing GifImagePlugin
+2026-02-23 19:20:09,558 - DEBUG - Importing GribStubImagePlugin
+2026-02-23 19:20:09,563 - DEBUG - Importing Hdf5StubImagePlugin
+2026-02-23 19:20:09,567 - DEBUG - Importing IcnsImagePlugin
+2026-02-23 19:20:09,578 - DEBUG - Importing IcoImagePlugin
+2026-02-23 19:20:09,583 - DEBUG - Importing ImImagePlugin
+2026-02-23 19:20:09,587 - DEBUG - Importing ImtImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Importing IptcImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Importing JpegImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Importing Jpeg2KImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Importing McIdasImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Importing MicImagePlugin
+2026-02-23 19:20:09,590 - DEBUG - Image: failed to import MicImagePlugin: No module named 'olefile'
+2026-02-23 19:20:09,590 - DEBUG - Importing MpegImagePlugin
+2026-02-23 19:20:09,606 - DEBUG - Importing MpoImagePlugin
+2026-02-23 19:20:09,608 - DEBUG - Importing MspImagePlugin
+2026-02-23 19:20:09,619 - DEBUG - Importing PalmImagePlugin
+2026-02-23 19:20:09,622 - DEBUG - Importing PcdImagePlugin
+2026-02-23 19:20:09,622 - DEBUG - Importing PcxImagePlugin
+2026-02-23 19:20:09,622 - DEBUG - Importing PdfImagePlugin
+2026-02-23 19:20:09,638 - DEBUG - Importing PixarImagePlugin
+2026-02-23 19:20:09,638 - DEBUG - Importing PngImagePlugin
+2026-02-23 19:20:09,638 - DEBUG - Importing PpmImagePlugin
+2026-02-23 19:20:09,638 - DEBUG - Importing PsdImagePlugin
+2026-02-23 19:20:09,638 - DEBUG - Importing QoiImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing SgiImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing SpiderImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing SunImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing TgaImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing TiffImagePlugin
+2026-02-23 19:20:09,654 - DEBUG - Importing WebPImagePlugin
+2026-02-23 19:20:09,670 - DEBUG - Importing WmfImagePlugin
+2026-02-23 19:20:09,670 - DEBUG - Importing XbmImagePlugin
+2026-02-23 19:20:09,670 - DEBUG - Importing XpmImagePlugin
+2026-02-23 19:20:09,670 - DEBUG - Importing XVThumbImagePlugin
+2026-02-23 19:20:09,686 - INFO - FILE_EXTENSION_INVALID - Client has uploaded an file with an invalid file extension.
+2026-02-23 19:20:09,687 - INFO - FILE_EXTENSION_INVALID - Client has uploaded an file with an invalid file extension.
+2026-02-23 19:20:13,999 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_value with data[71:118]
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_field with data[120:132]
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_value with data[134:144]
+2026-02-23 19:20:13,999 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:20:13,999 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:20:13,999 - DEBUG - Calling on_part_data with data[148:12755]
+2026-02-23 19:20:13,999 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:20:13,999 - DEBUG - Calling on_end with no data
+2026-02-23 19:20:13,999 - INFO - UPLOAD_RECEIVED - img_id : img880, filename : hosue_01.jpg
+2026-02-23 19:20:13,999 - DEBUG - FILE_SAVED - img_id : img880, pathway : api\images\img880\hosue_01.jpg
+2026-02-23 19:20:14,034 - INFO - FILE_EXTENSION_VERIFIED - img_id : img880, valid : True
+2026-02-23 19:20:14,034 - INFO - JOB_ENQUEUED - img_id : img880
+2026-02-23 19:20:14,036 - INFO - JOB_PROCESSING_STARTED - img_id : img880, status : processing
+2026-02-23 19:20:14,036 - ERROR - JOB_FAILED - img_id : img880, error : type object 'datetime.datetime' has no attribute 'timezone', exc_info=True
+2026-02-23 19:20:14,037 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:20:14,037 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:23:29,363 - DEBUG - close.started
+2026-02-23 19:23:29,383 - DEBUG - close.complete
+2026-02-23 19:23:29,384 - DEBUG - close.started
+2026-02-23 19:23:29,387 - DEBUG - close.complete
+2026-02-23 19:23:56,752 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:50:38,968 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:50:38,968 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:50:38,984 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:50:38,984 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:50:38,984 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:50:38,984 - DEBUG - Calling on_header_value with data[132:142]
+2026-02-23 19:50:38,984 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:50:38,984 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:50:38,984 - DEBUG - Calling on_part_data with data[146:8035]
+2026-02-23 19:50:38,984 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:50:38,984 - DEBUG - Calling on_end with no data
+2026-02-23 19:50:39,000 - INFO - UPLOAD_RECEIVED - img_id : img671, filename : cat_01.jpg
+2026-02-23 19:50:39,000 - DEBUG - FILE_SAVED - img_id : img671, pathway : api\images\img671\cat_01.jpg
+2026-02-23 19:50:39,368 - INFO - FILE_EXTENSION_VERIFIED - img_id : img671, valid : True
+2026-02-23 19:50:39,368 - INFO - JOB_ENQUEUED - img_id : img671
+2026-02-23 19:50:39,380 - INFO - JOB_PROCESSING_STARTED - img_id : img671, status : processing
+2026-02-23 19:50:39,380 - ERROR - JOB_FAILED - img_id : img671, error : local variable 'image_path' referenced before assignment, exc_info=True
+2026-02-23 19:50:39,380 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:50:39,380 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:53:01,492 - DEBUG - close.started
+2026-02-23 19:53:01,511 - DEBUG - close.complete
+2026-02-23 19:53:01,520 - DEBUG - close.started
+2026-02-23 19:53:01,520 - DEBUG - close.complete
+2026-02-23 19:55:09,721 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:55:09,721 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_value with data[132:142]
+2026-02-23 19:55:09,721 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:55:09,721 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:55:09,721 - DEBUG - Calling on_part_data with data[146:8035]
+2026-02-23 19:55:09,721 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:55:09,721 - DEBUG - Calling on_end with no data
+2026-02-23 19:55:09,721 - INFO - UPLOAD_RECEIVED - img_id : img932, filename : cat_01.jpg
+2026-02-23 19:55:09,738 - DEBUG - FILE_SAVED - img_id : img932, pathway : api\images\img932\cat_01.jpg
+2026-02-23 19:55:09,766 - INFO - FILE_EXTENSION_VERIFIED - img_id : img932, valid : True
+2026-02-23 19:55:09,766 - INFO - JOB_ENQUEUED - img_id : img932
+2026-02-23 19:55:09,788 - INFO - JOB_PROCESSING_STARTED - img_id : img932, status : processing
+2026-02-23 19:55:09,788 - INFO - CAPTION_MODEL_START - num_images=1
+2026-02-23 19:55:16,475 - INFO - CAPTION_MODEL_DONE
+2026-02-23 19:55:16,475 - INFO - NON_EXISTENT_DATA - File appears to contain NO EXIF Data.
+2026-02-23 19:55:16,478 - DEBUG - THUMBNAIL_GENERATING - img_id : img932, small? : True
+2026-02-23 19:55:16,489 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img932\thumbnails\small.jpg
+2026-02-23 19:55:16,489 - DEBUG - THUMBNAIL_GENERATING - img_id : img932, small? : False
+2026-02-23 19:55:16,495 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img932\thumbnails\medium.jpg
+2026-02-23 19:55:16,495 - INFO - CAPTION_GENERATED_SUCCESSFUL - img_idimg932
+2026-02-23 19:55:16,497 - INFO - THUMBNAILS_CREATED - img_id : img932
+2026-02-23 19:55:16,497 - INFO - JOB_COMPLETED - img_id : img932
+2026-02-23 19:55:16,497 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:55:16,497 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:56:38,234 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:56:38,234 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:56:38,236 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 19:56:38,236 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:38,236 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 19:56:38,236 - DEBUG - Calling on_header_value with data[132:142]
+2026-02-23 19:56:38,236 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:38,236 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:56:38,238 - DEBUG - Calling on_part_data with data[146:8250]
+2026-02-23 19:56:38,238 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:56:38,238 - DEBUG - Calling on_end with no data
+2026-02-23 19:56:38,238 - INFO - UPLOAD_RECEIVED - img_id : img750, filename : cat_02.jpg
+2026-02-23 19:56:38,240 - DEBUG - FILE_SAVED - img_id : img750, pathway : api\images\img750\cat_02.jpg
+2026-02-23 19:56:38,246 - INFO - FILE_EXTENSION_VERIFIED - img_id : img750, valid : True
+2026-02-23 19:56:38,246 - INFO - JOB_ENQUEUED - img_id : img750
+2026-02-23 19:56:38,250 - INFO - JOB_PROCESSING_STARTED - img_id : img750, status : processing
+2026-02-23 19:56:38,250 - INFO - CAPTION_MODEL_START - num_images=1
+2026-02-23 19:56:40,171 - INFO - CAPTION_MODEL_DONE
+2026-02-23 19:56:40,171 - INFO - NON_EXISTENT_DATA - File appears to contain NO EXIF Data.
+2026-02-23 19:56:40,173 - DEBUG - THUMBNAIL_GENERATING - img_id : img750, small? : True
+2026-02-23 19:56:40,182 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img750\thumbnails\small.jpg
+2026-02-23 19:56:40,182 - DEBUG - THUMBNAIL_GENERATING - img_id : img750, small? : False
+2026-02-23 19:56:40,191 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img750\thumbnails\medium.jpg
+2026-02-23 19:56:40,191 - INFO - CAPTION_GENERATED_SUCCESSFUL - img_idimg750
+2026-02-23 19:56:40,191 - INFO - THUMBNAILS_CREATED - img_id : img750
+2026-02-23 19:56:40,193 - INFO - JOB_COMPLETED - img_id : img750
+2026-02-23 19:56:40,193 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:56:40,195 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:56:40,199 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:56:40,201 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:56:40,201 - DEBUG - Calling on_header_value with data[71:118]
+2026-02-23 19:56:40,201 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:40,203 - DEBUG - Calling on_header_field with data[120:132]
+2026-02-23 19:56:40,203 - DEBUG - Calling on_header_value with data[134:144]
+2026-02-23 19:56:40,205 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:40,205 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:56:40,205 - DEBUG - Calling on_part_data with data[148:12755]
+2026-02-23 19:56:40,205 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:56:40,207 - DEBUG - Calling on_end with no data
+2026-02-23 19:56:40,207 - INFO - UPLOAD_RECEIVED - img_id : img500, filename : hosue_01.jpg
+2026-02-23 19:56:40,211 - DEBUG - FILE_SAVED - img_id : img500, pathway : api\images\img500\hosue_01.jpg
+2026-02-23 19:56:40,245 - INFO - FILE_EXTENSION_VERIFIED - img_id : img500, valid : True
+2026-02-23 19:56:40,245 - INFO - JOB_ENQUEUED - img_id : img500
+2026-02-23 19:56:40,247 - INFO - JOB_PROCESSING_STARTED - img_id : img500, status : processing
+2026-02-23 19:56:40,247 - INFO - CAPTION_MODEL_START - num_images=1
+2026-02-23 19:56:41,834 - INFO - CAPTION_MODEL_DONE
+2026-02-23 19:56:41,834 - INFO - NON_EXISTENT_DATA - File appears to contain NO EXIF Data.
+2026-02-23 19:56:41,834 - DEBUG - THUMBNAIL_GENERATING - img_id : img500, small? : True
+2026-02-23 19:56:41,841 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img500\thumbnails\small.jpg
+2026-02-23 19:56:41,841 - DEBUG - THUMBNAIL_GENERATING - img_id : img500, small? : False
+2026-02-23 19:56:41,849 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img500\thumbnails\medium.jpg
+2026-02-23 19:56:41,849 - INFO - CAPTION_GENERATED_SUCCESSFUL - img_idimg500
+2026-02-23 19:56:41,849 - INFO - THUMBNAILS_CREATED - img_id : img500
+2026-02-23 19:56:41,849 - INFO - JOB_COMPLETED - img_id : img500
+2026-02-23 19:56:41,849 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 19:56:41,849 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
+2026-02-23 19:56:44,900 - DEBUG - Calling on_part_begin with no data
+2026-02-23 19:56:44,900 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 19:56:44,900 - DEBUG - Calling on_header_value with data[71:117]
+2026-02-23 19:56:44,900 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:44,916 - DEBUG - Calling on_header_field with data[119:131]
+2026-02-23 19:56:44,916 - DEBUG - Calling on_header_value with data[133:157]
+2026-02-23 19:56:44,916 - DEBUG - Calling on_header_end with no data
+2026-02-23 19:56:44,916 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 19:56:44,916 - DEBUG - Calling on_part_data with data[161:9548]
+2026-02-23 19:56:44,916 - DEBUG - Calling on_part_end with no data
+2026-02-23 19:56:44,916 - DEBUG - Calling on_end with no data
+2026-02-23 19:56:44,916 - INFO - UPLOAD_RECEIVED - img_id : img029, filename : book_1.xlsx
+2026-02-23 19:56:44,916 - DEBUG - FILE_SAVED - img_id : img029, pathway : api\images\img029\book_1.xlsx
+2026-02-23 19:56:44,931 - DEBUG - Importing AvifImagePlugin
+2026-02-23 19:56:45,026 - DEBUG - Importing BlpImagePlugin
+2026-02-23 19:56:45,059 - DEBUG - Importing BmpImagePlugin
+2026-02-23 19:56:45,059 - DEBUG - Importing BufrStubImagePlugin
+2026-02-23 19:56:45,059 - DEBUG - Importing CurImagePlugin
+2026-02-23 19:56:45,068 - DEBUG - Importing DcxImagePlugin
+2026-02-23 19:56:45,140 - DEBUG - Importing DdsImagePlugin
+2026-02-23 19:56:45,160 - DEBUG - Importing EpsImagePlugin
+2026-02-23 19:56:45,170 - DEBUG - Importing FitsImagePlugin
+2026-02-23 19:56:45,186 - DEBUG - Importing FliImagePlugin
+2026-02-23 19:56:45,186 - DEBUG - Importing FpxImagePlugin
+2026-02-23 19:56:45,214 - DEBUG - Image: failed to import FpxImagePlugin: No module named 'olefile'
+2026-02-23 19:56:45,214 - DEBUG - Importing FtexImagePlugin
+2026-02-23 19:56:45,235 - DEBUG - Importing GbrImagePlugin
+2026-02-23 19:56:45,239 - DEBUG - Importing GifImagePlugin
+2026-02-23 19:56:45,241 - DEBUG - Importing GribStubImagePlugin
+2026-02-23 19:56:45,241 - DEBUG - Importing Hdf5StubImagePlugin
+2026-02-23 19:56:45,252 - DEBUG - Importing IcnsImagePlugin
+2026-02-23 19:56:45,307 - DEBUG - Importing IcoImagePlugin
+2026-02-23 19:56:45,328 - DEBUG - Importing ImImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing ImtImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing IptcImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing JpegImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing Jpeg2KImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing McIdasImagePlugin
+2026-02-23 19:56:45,344 - DEBUG - Importing MicImagePlugin
+2026-02-23 19:56:45,360 - DEBUG - Image: failed to import MicImagePlugin: No module named 'olefile'
+2026-02-23 19:56:45,360 - DEBUG - Importing MpegImagePlugin
+2026-02-23 19:56:45,369 - DEBUG - Importing MpoImagePlugin
+2026-02-23 19:56:45,408 - DEBUG - Importing MspImagePlugin
+2026-02-23 19:56:45,408 - DEBUG - Importing PalmImagePlugin
+2026-02-23 19:56:45,424 - DEBUG - Importing PcdImagePlugin
+2026-02-23 19:56:45,442 - DEBUG - Importing PcxImagePlugin
+2026-02-23 19:56:45,442 - DEBUG - Importing PdfImagePlugin
+2026-02-23 19:56:45,488 - DEBUG - Importing PixarImagePlugin
+2026-02-23 19:56:45,488 - DEBUG - Importing PngImagePlugin
+2026-02-23 19:56:45,488 - DEBUG - Importing PpmImagePlugin
+2026-02-23 19:56:45,488 - DEBUG - Importing PsdImagePlugin
+2026-02-23 19:56:45,504 - DEBUG - Importing QoiImagePlugin
+2026-02-23 19:56:45,520 - DEBUG - Importing SgiImagePlugin
+2026-02-23 19:56:45,551 - DEBUG - Importing SpiderImagePlugin
+2026-02-23 19:56:45,551 - DEBUG - Importing SunImagePlugin
+2026-02-23 19:56:45,551 - DEBUG - Importing TgaImagePlugin
+2026-02-23 19:56:45,569 - DEBUG - Importing TiffImagePlugin
+2026-02-23 19:56:45,569 - DEBUG - Importing WebPImagePlugin
+2026-02-23 19:56:45,647 - DEBUG - Importing WmfImagePlugin
+2026-02-23 19:56:45,647 - DEBUG - Importing XbmImagePlugin
+2026-02-23 19:56:45,678 - DEBUG - Importing XpmImagePlugin
+2026-02-23 19:56:45,678 - DEBUG - Importing XVThumbImagePlugin
+2026-02-23 19:56:45,692 - INFO - FILE_EXTENSION_INVALID - Client has uploaded an file with an invalid file extension.
+2026-02-23 19:56:45,692 - INFO - FILE_EXTENSION_INVALID - Client has uploaded an file with an invalid file extension.
+2026-02-23 20:50:12,138 - DEBUG - Calling on_part_begin with no data
+2026-02-23 20:50:12,158 - DEBUG - Calling on_header_field with data[50:69]
+2026-02-23 20:50:12,158 - DEBUG - Calling on_header_value with data[71:116]
+2026-02-23 20:50:12,159 - DEBUG - Calling on_header_end with no data
+2026-02-23 20:50:12,160 - DEBUG - Calling on_header_field with data[118:130]
+2026-02-23 20:50:12,160 - DEBUG - Calling on_header_value with data[132:141]
+2026-02-23 20:50:12,160 - DEBUG - Calling on_header_end with no data
+2026-02-23 20:50:12,161 - DEBUG - Calling on_headers_finished with no data
+2026-02-23 20:50:12,163 - DEBUG - Calling on_part_data with data[145:261939]
+2026-02-23 20:50:12,166 - DEBUG - Calling on_part_data with data[0:57800]
+2026-02-23 20:50:12,167 - DEBUG - Calling on_part_end with no data
+2026-02-23 20:50:12,167 - DEBUG - Calling on_end with no data
+2026-02-23 20:50:12,178 - INFO - UPLOAD_RECEIVED - img_id : img135, filename : cat_03.png
+2026-02-23 20:50:12,184 - DEBUG - FILE_SAVED - img_id : img135, pathway : api\images\img135\cat_03.png
+2026-02-23 20:50:12,218 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:12,218 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:12,218 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:12,218 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:12,218 - INFO - FILE_EXTENSION_VERIFIED - img_id : img135, valid : True
+2026-02-23 20:50:12,218 - INFO - JOB_ENQUEUED - img_id : img135
+2026-02-23 20:50:12,234 - INFO - JOB_PROCESSING_STARTED - img_id : img135, status : processing
+2026-02-23 20:50:12,250 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:12,250 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:12,250 - INFO - CAPTION_MODEL_START - num_images=1
+2026-02-23 20:50:12,250 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:12,250 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:19,406 - INFO - CAPTION_MODEL_DONE
+2026-02-23 20:50:19,410 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:19,412 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:19,426 - INFO - NON_EXISTENT_DATA - File appears to contain NO EXIF Data.
+2026-02-23 20:50:19,426 - DEBUG - THUMBNAIL_GENERATING - img_id : img135, small? : True
+2026-02-23 20:50:19,428 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:19,428 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:19,467 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img135\thumbnails\small.jpg
+2026-02-23 20:50:19,468 - DEBUG - THUMBNAIL_GENERATING - img_id : img135, small? : False
+2026-02-23 20:50:19,468 - DEBUG - STREAM b'IHDR' 16 13
+2026-02-23 20:50:19,468 - DEBUG - STREAM b'IDAT' 41 319537
+2026-02-23 20:50:19,493 - DEBUG - THUMBNAIL_SAVED - pathway : api\images\img135\thumbnails\medium.jpg
+2026-02-23 20:50:19,499 - INFO - CAPTION_GENERATED_SUCCESSFUL - img_idimg135
+2026-02-23 20:50:19,499 - INFO - THUMBNAILS_CREATED - img_id : img135
+2026-02-23 20:50:19,499 - INFO - JOB_COMPLETED - img_id : img135
+2026-02-23 20:50:19,500 - DEBUG - QUEUE_SIZE_AFTER_DONE - size=0
+2026-02-23 20:50:19,501 - DEBUG - QUEUE_SIZE_BEFORE_GET - size=0
