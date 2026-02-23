@@ -9,27 +9,45 @@ This project implements a RESTful Image Processing Pipeline API as part of the D
 The system is designed to automatically process uploaded images, generate thumbnails, extract metadata, perform AI-based image captioning, and expose the processed results through structured API endpoints.
 
 The API supports JPEG and PNG image uploads and performs the following automated processing steps:
+
     * Accepts image uploads via POST /api/images
+
     * Generates two thumbnail sizes (small and medium)
+
     * Extracts core metadata including dimensions, file format, file size, and timestamp
+
     * Generates an AI-based image caption using a publicly available model
+
     * Stores processing results in persistent storage
+
     * Provides structured JSON responses following the required response format
+
     * Exposes thumbnail images via dedicated retrieval endpoints
+
     * Tracks processing statistics including success rate and average processing time
 
 The system follows RESTful API design principles and separates concerns between:
+
     * Image storage
+
     * Metadata extraction
+
     * Thumbnail generation
+
     * AI analysis
+
     * API response handling
+
     * Processing statistics tracking
 
 Error handling is implemented to gracefully manage:
+
     * Unsupported file formats
+
     * Corrupted image files
+
     * Processing failures
+
     * AI inference errors
 
 Processing logs are recorded using structured logging to support traceability and debugging. This implementation is designed to be modular, extensible, and production-oriented, with optional support for asynchronous processing and job queuing for improved scalability.
@@ -104,15 +122,15 @@ pip install fastapi uvicorn pillow torch torchvision transformers python-multipa
 
 Should you have a HuggingFace Token, you may want to configure an environment variable so as to avoid rate limits when downloading the AI model:
 
-    1. Create an account at: https://huggingface.co/
+1. Create an account at: https://huggingface.co/
 
-    2. Generate a token at: https://huggingface.co/settings/tokens
+2. Generate a token at: https://huggingface.co/settings/tokens
 
-    3. Set the environment variable (PowerShell):
+3. Set the environment variable (PowerShell):
 
-    ```bash
-    $env:HF_TOKEN="your_token_here"
-    ```
+```bash
+$env:HF_TOKEN="your_token_here"
+```
 ### E. Running the application
 
 Start the FastAPI server:
@@ -124,6 +142,22 @@ You will see the following result:
 
 ![alt text](image.png)
 
+<b>Take note of the IP Address and Port No.. You will need it later...</b>
+
+### F. Using the Application
+
+Open up a new powershell tab or window:
+
+1. Uploading a file.
+
+Enter the IP Address and Port No. into the following command. Replace <file_name> and <file_extension> will the relevant info.
+```bash
+curl.exe -F "file=@<file_name>.<file_extension>" http://<ip_addr>:<port_no.>/api/images
+```
+
+<b>Expected Results:</b>
+*Depending on the <file_extension> type, you may or may not get an error message.
+![alt text](image-1.png)
 
 
 
