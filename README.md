@@ -170,7 +170,8 @@ Returns information for only the specified image mentioned. Should a client ente
 
 To be run in the web browser. Web browser should return the specified image and its respective size (depending on what the user specified). Will return an error message if the user requests for a invalid image_id or an invalid image size.
 
-6. GET /api/stats 
+6. GET /api/stats
+
 Returns the statistics of all the images (e.g. total no. of files uploaded, no. of failed files, average time taken to process each file, etc.)
 
 ## 4. Sample Usage (i.e. How to run the code...)
